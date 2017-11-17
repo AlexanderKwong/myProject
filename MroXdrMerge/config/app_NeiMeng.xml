@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<SSHHost>192.168.1.31</SSHHost>
+	<SSHPort>22</SSHPort>
+	<SSHUser>hmaster</SSHUser>
+	<SSHPwd>mastercom168</SSHPwd>
+	<HadoopPwd>mastercom168</HadoopPwd>
+<!-- 	<HadoopHdfsPort>9000</HadoopHdfsPort>
+	<HadoopUser></HadoopUser>  
+	<HadoopHost>nmdsj133nds/user/gaowei</HadoopHost>   -->
+	<LteCellConfigPath>/user/gaowei/mt_wlyh/Data/config/tb_cfg_city_cell_neimenggu.txt</LteCellConfigPath>
+	<MreDataPath>/mt_wlyh/Data/mre</MreDataPath>
+	<MroXdrMergePath>/user/gaowei/mt_wlyh/Data/mroxdrmerge</MroXdrMergePath>
+	<MroDataPath>/mt_wlyh/Data/mro</MroDataPath>
+	<MTMroDataPath>/user/gaowei/O_MR_MRO_LTE_NCELL</MTMroDataPath>
+	<OrigLocationPath>/flume/location</OrigLocationPath>
+	<PigBinPath>/opt/pig-0.15.0/bin</PigBinPath>
+	<OrigXdrPath>/flume/xdr</OrigXdrPath>
+	<XdrDataPath>/result/test</XdrDataPath>
+	<GsmCellConfigPath>/mt_wlyh/Data/config/tb_cfg_city_cell_gsm.txt
+	</GsmCellConfigPath>
+	<TDCellConfigPath>/mt_wlyh/Data/config/tb_cfg_city_cell_td.txt
+	</TDCellConfigPath>
+	<FigureConfigPath>/user/gaowei/mt_wlyh/Data/config/cellfigure</FigureConfigPath>
+	<SimuLocConfigPath>/user/gaowei/mt_wlyh/Data/config/simuloc</SimuLocConfigPath>
+	<SimuInSize>5</SimuInSize>
+	<SimuOutSize>10</SimuOutSize>
+	<!-- reduce 的数量 -->
+	<reduceNmu>1000</reduceNmu>
+	<!--前后扩展场强的范围 -->
+	<range>6</range>
+	<!--栅格中至少至少匹配到的小区数，小于这个数丢弃该栅格 -->
+	<CellNum>1</CellNum>
+	<!-- -经度加减随机数范围 -->
+	<ilongitudRrandomWidth>0.0002</ilongitudRrandomWidth>
+	<!-- -纬度加减随机数范围 -->
+	<ilatitudeRrandomWidth>0.00018</ilatitudeRrandomWidth>
+	<pianyiNum>1</pianyiNum>
+	<!-- cqt、dt 划分比例分界线 -->
+	<percent>0.51</percent>
+	<!-- figureFixFlag 是否用指纹库定位 -->
+	<figureFixFlag>1</figureFixFlag>
+	<!-- 单个map分配的核心数 -->
+	<mapVcore>1</mapVcore>
+	<!-- 单个reduce分配的核心数 -->
+	<reduceVcore>2</reduceVcore>
+	<!-- lzo库路径 -->
+	<lzoPath>/usr/local/lzo/lib</lzoPath>
+	<!-- map内存大小 兆为单位 -->
+	<mapMemory>4096</mapMemory>
+	<!-- reduce内存大小 兆为单位 -->
+	<reduceMemory>8192</reduceMemory>
+	<!--cellgridMerge中同一个cellgrid的sample个数极限值 -->
+	<limitSampleNum>200</limitSampleNum>
+	<!-- 栅格大小 -->
+	<size>10</size>
+	<!-- cellgrid原始存放路径 -->
+	<cellgridPath>/mt_wlyh/Data/cellgrid</cellgridPath>
+	<!-- cellgridmerge后存放路径 -->
+	<cellgridConfigPath>/mt_wlyh/Data/adjustFigure</cellgridConfigPath>
+	<!-- imei能力库的位置 -->
+	<imeiCapbilityPath>/mt_wlyh</imeiCapbilityPath>
+	<!-- 小区楼宇关系表所文件夹 -->
+	<cellBuildPath>/mt_wlyh/Data/config/cellBuild/HaErBin</cellBuildPath>
+	<!-- 用户常驻小区 -->
+	<path_ImsiCellLocPath>E:\mt_wlyh\Data\config\ImsiResidentCell
+	</path_ImsiCellLocPath>
+	<!-- 苏研平台id -->
+	<SuYanId>80ca02329e5bdfd0bc79</SuYanId>
+	<!-- 苏研平台key -->
+	<SunYanKey>facd3668468f2b4bb3e4064b9d88ea414ac3acfc</SunYanKey>
+	<SunYanQueue>root.bdoc.renter_1.renter_9.dev_571</SunYanQueue>
+</configuration>

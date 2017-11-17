@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<SSHHost></SSHHost>
+	<SSHPort>50072</SSHPort>
+	<SSHUser>hmaster</SSHUser>
+	<SSHPwd>mastercom168</SSHPwd>
+	<HadoopPwd></HadoopPwd>
+	<HadoopHdfsPort>25000</HadoopHdfsPort>
+	<HadoopUser>wangyou</HadoopUser>
+	<HadoopHost>10.113.246.10</HadoopHost>
+	<LteCellConfigPath>/wangyou/mastercom/config/tb_cfg_city_cell.txt</LteCellConfigPath>
+	<MreDataPath>/wangyou/mastercom/mre</MreDataPath>
+	<MroXdrMergePath>/wangyou/mastercom/mroxdrmerge</MroXdrMergePath>
+	<MroDataPath>/wangyou/mastercom/mro</MroDataPath>
+	<MTMroDataPath>/wangyou/mastercom/mromt</MTMroDataPath>
+	<OrigLocationPath>/wangyou/mastercom/location</OrigLocationPath>
+	<PigBinPath>/opt/pig-0.15.0/bin</PigBinPath>
+	<OrigXdrPath>/wangyou/mastercom/orgxdr</OrigXdrPath>
+	<XdrDataPath>/wangyou/mastercom/xdr</XdrDataPath>
+	<GsmCellConfigPath>/wangyou/mastercoma/config/tb_cfg_city_cell_gsm.txt</GsmCellConfigPath>
+	<TDCellConfigPath>/wangyou/mastercom/config/tb_cfg_city_cell_td.txt</TDCellConfigPath>
+	<FigureConfigPath>/wangyou/mastercom/config</FigureConfigPath>
+	<SimuLocConfigPath>/wangyou/mastercom/simuloc</SimuLocConfigPath>
+	
+		<!--高铁相关配置-->
+	<RailCellConf>/wangyou/mastercom/rail/cellconf</RailCellConf>
+	<RailConf>/wangyou/mastercom/rail/railconf</RailConf>
+	<RailRailStation>/wangyou/mastercom/rail/stationconf/railstation.txt</RailRailStation>
+	<RailRRU>/wangyou/mastercom/rail/rruconf/rru.txt</RailRRU>
+	
+	<!-- reduce 的数量 -->
+	<reduceNmu>1000</reduceNmu>
+	<!--前后扩展场强的范围 -->
+	<range>6</range>
+	<!--栅格中至少至少匹配到的小区数，小于这个数丢弃该栅格 -->
+	<CellNum>1</CellNum>
+	<!-- -经度加减随机数范围 -->
+	<ilongitudRrandomWidth>0.0002</ilongitudRrandomWidth>
+	<!-- -纬度加减随机数范围 -->
+	<ilatitudeRrandomWidth>0.00018</ilatitudeRrandomWidth>
+	<pianyiNum>1</pianyiNum>
+	<!-- cqt、dt 划分比例分界线 -->
+	<percent>0.51</percent>
+	<!-- figureFixFlag 是否用指纹库定位 -->
+	<figureFixFlag>1</figureFixFlag>
+	<!-- 单个map分配的核心数 -->
+	<mapVcore>2</mapVcore>
+	<!-- 单个reduce分配的核心数 -->
+	<reduceVcore>2</reduceVcore>
+	<!-- lzo库路径 -->
+	<lzoPath>/usr/local/lzo/lib</lzoPath>
+	<!-- map内存大小 兆为单位 -->
+	<mapMemory>8192</mapMemory>
+	<!-- reduce内存大小 兆为单位 -->
+	<reduceMemory>8192</reduceMemory>
+</configuration>

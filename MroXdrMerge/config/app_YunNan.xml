@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<SSHHost>192.168.1.31</SSHHost>
+	<SSHPort>22</SSHPort>
+	<SSHUser>root</SSHUser>
+	<SSHPwd>hmaster</SSHPwd>
+	<HadoopPwd>mastercom168</HadoopPwd>
+	<HadoopHdfsPort>9000</HadoopHdfsPort>
+	<HadoopUser>root</HadoopUser>
+	<HadoopHost>192.168.1.31</HadoopHost>
+	<LteCellConfigPath>/mt_wlyh/Data/config/yn/tb_cfg_city_cell.txt</LteCellConfigPath>
+	<MreDataPath>/mt_wlyh/Data/mre</MreDataPath>
+	<MroXdrMergePath>/mt_wlyh/Data/mroxdrmerge</MroXdrMergePath>
+	<MroDataPath>/mt_wlyh/Data/mro</MroDataPath>
+	<MTMroDataPath>/mt_wlyh/Data/mromt</MTMroDataPath>
+	<OrigLocationPath>/flume/location</OrigLocationPath>
+	<PigBinPath>/opt/pig-0.15.0/bin</PigBinPath>
+	<OrigXdrPath>/flume/xdr</OrigXdrPath>
+	<XdrDataPath>/result/test</XdrDataPath>
+	<GsmCellConfigPath>/mt_wlyh/Data/config/tb_cfg_city_cell_gsm.txt</GsmCellConfigPath>
+	<TDCellConfigPath>/mt_wlyh/Data/config/tb_cfg_city_cell_td.txt</TDCellConfigPath>
+	<FigureConfigPath>/mt_wlyh/Data/config/cellfigure</FigureConfigPath>
+	<SimuLocConfigPath>/mt_wlyh/Data/config/simuloc</SimuLocConfigPath>
+	<SimuInSize>5</SimuInSize>
+	<SimuOutSize>10</SimuOutSize>
+	<SimuInAtte>0</SimuInAtte>
+
+	<reduceNmu>1000</reduceNmu>
+
+	<range>6</range>
+
+	<CellNum>1</CellNum>
+
+	<ilongitudRrandomWidth>0.0002</ilongitudRrandomWidth>
+
+	<ilatitudeRrandomWidth>0.00018</ilatitudeRrandomWidth>
+	<pianyiNum>1</pianyiNum>
+
+	<percent>0.51</percent>
+
+	<figureFixFlag>1</figureFixFlag>
+
+	<mapVcore>1</mapVcore>
+
+	<reduceVcore>2</reduceVcore>
+
+	<lzoPath>/usr/local/lzo/lib</lzoPath>
+
+	<mapMemory>4096</mapMemory>
+
+	<reduceMemory>8192</reduceMemory>
+	
+	<!-- 写完整路径，时间和前面的MroXdrMerge使用%1$s 时间使用%2$s来表示 -->
+	<httpPath>/seq/news1u_http_cut/20%1$s</httpPath>
+	<mwPath>/nono/seq/Mw/20%1$s</mwPath>
+	<svPath>/no/seq/Sv/20%1$s</svPath>
+	<rxPath>/no/seq/Rx/20%1$s</rxPath>
+	<mosPath>/no%1$s/NoSatisUser/data_%2$s/Mgos_%2$s</mosPath>
+	<dhwjtPath>/no%1$s/NoSatisUser/data_%2$s/WJtdh_%2$s</dhwjtPath>
+	<rtpPath></rtpPath>
+	<mgPath></mgPath>
+	<mmePath>/seq/news1mme_cut/20%1$s</mmePath>
+	<imsMoPath>/no/seq/ims_mo/20%1$s</imsMoPath>
+	<imsMtPath>/no/seq/ims_mt/20%1$s</imsMtPath>
+	<quaLityPath>/no/seq/quality/20%1$s</quaLityPath>
+	<UuPath>/seq/UU/20%1$s</UuPath>
+
+	<!-- 是否输出源数据，加上定位信息  是填写yes,默认为false -->
+	<outXdrData>no</outXdrData>
+	<!-- 是否输出 event统计  是填写yes,默认为false -->
+	<toEventData>yes</toEventData>
+	<outSuccessData>no</outSuccessData>
+	<outFailData>yes</outFailData>
+	
+	
+</configuration>

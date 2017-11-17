@@ -1,0 +1,141 @@
+package mergestat;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.hadoop.io.Text;
+
+import jan.com.hadoop.mapred.CombineSmallFileRecordReader;
+import jan.com.hadoop.mapred.DataDealMapper;
+import jan.util.LOGHelper;
+import jan.util.StringHelper;
+import mroxdrmerge.MainModel;
+
+public class MergeStatMapper
+{
+	public static class MergeMapper extends DataDealMapper<Object, Text, MergeKey, Text>
+	{
+		private int dataType = 0;
+		private String mapKey = "";
+
+		private IMergeDataDo mergeDataDo = null;
+		private String curFileSplitPath = "";
+		private String tmpInPath = "";
+		private Map<String, Integer> pathIndexMap = null;
+
+		@Override
+		protected void setup(Context context) throws IOException, InterruptedException
+		{
+			super.setup(context);
+			MainModel.GetInstance().setConf(conf);
+
+			initData(context);
+		}
+
+		private void initData(Context context)
+		{
+			// pathIndex: 1;/mt_wlyh/Data/test1$2;/mt_wlyh/Data/test2
+			String inpathindex = conf.get("mastercom.mroxdrmerge.mergestat.inpathindex");
+			pathIndexMap = new HashMap<String, Integer>();
+			for (String pathPare : inpathindex.split("\\$"))
+			{
+				if (pathPare.length() == 0)
+				{
+					continue;
+				}
+
+				String[] ppPare = pathPare.split(";");
+				String ppPath = ppPare[1];
+
+				for (String pp : ppPath.split(","))
+				{
+					String tm_formatPath = pp;
+					if (pp.indexOf("hdfs://") >= 0)
+					{
+						int tm_sPos = tm_formatPath.indexOf("/", ("hdfs://").length());
+						tm_formatPath = tm_formatPath.substring(tm_sPos);
+					}
+
+					tm_formatPath = StringHelper.SideTrim(tm_formatPath, "/");
+					tm_formatPath = StringHelper.SideTrim(tm_formatPath, "\\\\");
+					tm_formatPath = "/" + tm_formatPath;
+
+					pathIndexMap.put(tm_formatPath, Integer.parseInt(ppPare[0]));
+				}
+			}
+		}
+
+		private IMergeDataDo initDataType(String dirPath) throws InterruptedException
+		{
+			// hdfs://node001:9000/mt_wlyh/Data/mroxdrmerge/mro_loc/data_01_160421/TB_SIGNAL_CELL_01_160421
+			int sPos = dirPath.indexOf("/", ("hdfs://").length());
+			String formatPath = dirPath.substring(sPos);
+			if (dirPath.startsWith("file:"))
+			{
+				formatPath = dirPath.replace("file:", "");
+			}
+			if (!pathIndexMap.containsKey(formatPath))
+			{
+				throw new InterruptedException("path index is not found, please check : " + formatPath);
+			}
+
+			int mergeType = pathIndexMap.get(formatPath);
+
+			try
+			{
+				return MergeDataFactory.GetInstance().getMergeDataObject(mergeType);
+			}
+			catch (Exception e)
+			{
+				throw new InterruptedException("init data type error ");
+			}
+		}
+
+		/**
+		 * Called once at the end of the task.
+		 */
+		protected void cleanup(Context context) throws IOException, InterruptedException
+		{
+			super.cleanup(context);
+		}
+
+		public void map(Object key, Text value, Context context) throws IOException, InterruptedException
+		{
+			if (value.toString().length() == 0)
+			{
+				return;
+			}
+
+			tmpInPath = context.getConfiguration().get(CombineSmallFileRecordReader.CombineSmallFilePath);
+			if (curFileSplitPath.length() != tmpInPath.length() || !curFileSplitPath.equals(tmpInPath))
+			{
+				mergeDataDo = initDataType(tmpInPath);
+				curFileSplitPath = tmpInPath;
+			}
+
+			String[] valstrs = value.toString().split("\t", -1);
+
+			try
+			{
+				if (!mergeDataDo.fillData(valstrs, 0))
+				{
+					return;
+				}
+			}
+			catch (Exception e)
+			{
+				LOGHelper.GetLogger().writeLog(LogType.error, "mergeDataDo.fillData error : " + value.toString(), e);
+				return;
+			}
+
+			dataType = mergeDataDo.getDataType();
+			mapKey = mergeDataDo.getMapKey();
+
+			MergeKey itemKey = new MergeKey(dataType, mapKey);
+			context.write(itemKey, value);
+		}
+
+	}
+
+}

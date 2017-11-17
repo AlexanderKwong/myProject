@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<comm>
+  <!--<serverip>192.168.1.144</serverip>-->
+  <serverip>192.168.1.50</serverip>
+  <dbuser>dtauser</dbuser>
+  <dbpassword>dtauser</dbpassword>
+  <database>MBD_SIMU_C_Shanghai</database>
+</comm>

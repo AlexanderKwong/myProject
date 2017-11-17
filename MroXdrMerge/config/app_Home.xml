@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<SSHHost>192.168.1.31</SSHHost>
+	<SSHPort>22</SSHPort>
+	<SSHUser>hmaster</SSHUser>
+	<SSHPwd>mastercom168</SSHPwd>
+	<HadoopPwd>mastercom168</HadoopPwd>
+	<HadoopHdfsPort>9000</HadoopHdfsPort>
+	<HadoopUser>hmaster</HadoopUser>
+	<HadoopHost>192.168.1.31</HadoopHost>
+	<LteCellConfigPath>E:\chongqing\config\tb_cfg_city_cell.txt</LteCellConfigPath>
+	<MreDataPath>/mt_wlyh/Data/mre</MreDataPath>
+	<MroXdrMergePath>E:/mt_wlyh/Data/mroxdrmerge</MroXdrMergePath>
+	<MroDataPath>E:/mt_wlyh/Data/mro</MroDataPath>
+	<MTMroDataPath>E:/mt_wlyh/Data/mromt</MTMroDataPath>
+	<OrigLocationPath>/flume/location</OrigLocationPath>
+	<PigBinPath>/opt/pig-0.15.0/bin</PigBinPath>
+	<OrigXdrPath>/flume/xdr</OrigXdrPath>
+	<XdrDataPath>/result/test</XdrDataPath>
+	<GsmCellConfigPath>/mt_wlyh/Data/config/tb_cfg_city_cell_gsm.txt
+	</GsmCellConfigPath>
+	<TDCellConfigPath>/mt_wlyh/Data/config/tb_cfg_city_cell_td.txt
+	</TDCellConfigPath>
+	<FigureConfigPath>/mt_wlyh/Data/config/cellfigure</FigureConfigPath>
+	<SimuLocConfigPath>/mt_wlyh/Data/config/simuloc</SimuLocConfigPath>
+	<SimuInSize>5</SimuInSize>
+	<SimuOutSize>10</SimuOutSize>
+	<SimuOrgInSize>5</SimuOrgInSize>
+	<SimuOrgOutSize>10</SimuOrgOutSize>
+	<SimuInAtte>0</SimuInAtte>	<!-- reduce 的数量 -->
+	<reduceNmu>1000</reduceNmu>
+	<!--前后扩展场强的范围 -->
+	<range>6</range>
+	<!--栅格中至少至少匹配到的小区数，小于这个数丢弃该栅格 -->
+	<CellNum>1</CellNum>
+	<!-- -经度加减随机数范围 -->
+	<ilongitudRrandomWidth>0.0002</ilongitudRrandomWidth>
+	<!-- -纬度加减随机数范围 -->
+	<ilatitudeRrandomWidth>0.00018</ilatitudeRrandomWidth>
+	<pianyiNum>1</pianyiNum>
+	<!-- cqt、dt 划分比例分界线 -->
+	<percent>0.51</percent>
+	<!-- figureFixFlag 是否用指纹库定位 -->
+	<figureFixFlag>1</figureFixFlag>
+	<!-- 单个map分配的核心数 -->
+	<mapVcore>1</mapVcore>
+	<!-- 单个reduce分配的核心数 -->
+	<reduceVcore>2</reduceVcore>
+	<!-- lzo库路径 -->
+	<lzoPath>/usr/local/lzo/lib</lzoPath>
+	<!-- map内存大小 兆为单位 -->
+	<mapMemory>1024</mapMemory>
+	<!-- reduce内存大小 兆为单位 -->
+	<reduceMemory>2048</reduceMemory>
+	<!--cellgridMerge中同一个cellgrid的sample个数极限值 -->
+	<limitSampleNum>200</limitSampleNum>
+	<!-- 栅格大小 -->
+	<size>10</size>
+	<!-- cellgrid原始存放路径 -->
+	<cellgridSrcPath>/mt_wlyh/Data/cellgrid/160812</cellgridSrcPath>
+	<!-- 修正指纹库存放相关文件的根路径 -->
+	<adjustedSrcPath>/mt_wlyh/Data/adjustFigure</adjustedSrcPath>
+	<!-- 要修正的指纹库存放位置，此时的指纹库按照10 /40分开存放 -->
+	<srcFigurePath>/mt_wlyh/Data/figuredb/1/40</srcFigurePath>
+	<!-- eci表放hdfs上的位置 -->
+	<eciConfigPath>/mt_wlyh/Data/config/eci_table.txt</eciConfigPath>
+	<!-- imei能力库的位置 -->
+	<imeiCapbilityPath>e:/mt_wlyh/Data/config/imeiCapbilityTable.txt
+	</imeiCapbilityPath>
+	<!-- 小区楼宇关系表所文件夹 -->
+	<cellBuildPath>E:/tmp</cellBuildPath>
+	<!-- 小区楼宇wifi路径 -->
+	<cellBuildWifiPath>e:\mt_wlyh\Data\config\cellbuildwifi
+	</cellBuildWifiPath>
+	<!-- 用户常驻小区 -->
+	<path_ImsiCellLocPath>E:\chongqing\config\tb_cfg_city_cell.txt
+	</path_ImsiCellLocPath>
+	<SuYanId></SuYanId>
+	<SunYanKey></SunYanKey>
+	<SuYanUser></SuYanUser>
+	<SunYanQueue></SunYanQueue>
+	<!-- 高铁相关配置 -->
+	<RailCellConf></RailCellConf>
+	<RailConf></RailConf>
+	<RailRailStation></RailRailStation>
+	<RailRRU></RailRRU>
+	<!-- 特殊用户列表 -->
+	<specialUserList></specialUserList>
+	<!-- mdt path -->
+	<MdtLogDataPath>E:/mt_wlyh/Data/LOG</MdtLogDataPath>
+	<MdtImmDataPath>E:/mt_wlyh/Data/MME</MdtImmDataPath>
+	<indoorSize>10</indoorSize>
+	<outDoorSize>20</outDoorSize>
+	<roundSizeOut>40</roundSizeOut>
+	<roundSizeIn>20</roundSizeIn>
+	
+	<RailCellConf>/sparktest/rail/shanghai/cellconf</RailCellConf>
+	<RailConf>/sparktest/rail/shanghai/railconf</RailConf>
+	<RailRailStation>/sparktest/rail/shanghai/stationconf/railstation.txt</RailRailStation>
+	<RailRRU>/sparktest/rail/sichuan/shanghai/rru.txt</RailRRU>
+	
+</configuration>

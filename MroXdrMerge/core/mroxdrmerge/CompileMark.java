@@ -1,0 +1,50 @@
+package mroxdrmerge;
+
+public class CompileMark
+{
+	public static final int HaErBin = 1;
+	public static final int ShanXi = 2;
+	public static final int GuiZhou = 3;
+	public static final int ShangHai = 4;
+	public static final int LZO_Compress = 5;
+	public static final int URI_ANALYSE = 6;
+	public static final int LiaoNing = 7;
+	public static final int Home = 8;
+	public static final int GanSu = 9;
+	public static final int Debug = 10;
+	public static final int ShenZhen = 11;
+	public static final int NoCpeUser = 12;
+	public static final int HWRegist = 13;
+	public static final int GuangXi = 14;
+	public static final int OutAllSample = 15;
+	public static final int UserLoc = 16;
+	public static final int MrStat = 17;
+	public static final int SiChuan = 18;
+	public static final int NingXia = 19;
+	public static final int NoMtMro = 20;
+	public static final int BeiJing = 21;
+	public static final int ChongQing = 22;
+	public static final int HaiNan = 23;
+	public static final int QingHai = 24;
+	public static final int ShanXiJin = 25;
+	public static final int MroDetail = 26;
+	public static final int YunNan = 27;
+	public static final int UserLoc2 = 28;
+	public static final int EncryptUser = 29;
+	public static final int BA5MinCell = 30;
+	public static final int EstiLoc = 31;
+	public static final int LocAll = 32;
+	public static final int xdrFormat = 33;
+	public static final int SuYanPlat = 34;
+	public static final int HiRail = 35;
+	public static final int TianJin = 36;
+	public static final int NeiMeng = 37;
+	public static final int NoXdrHttp = 38;
+	public static final int MSISDN = 39;
+	public static final int MDT = 40;
+	public static final int fgOttStat = 41;
+	public static final int XinJiang = 42;
+	public static final int NoOutSample = 43;
+	public static final int FilterCell = 44;
+	public static final int GuangXi2 = 45;
+}
