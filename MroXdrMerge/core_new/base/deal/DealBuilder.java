@@ -1,4 +1,8 @@
-package baseDeal;
+package base.deal;
+
+import base.IDeal;
+import base.deal.exception.BreakException;
+import base.deal.exception.ContinueException;
 
 import java.util.ArrayList;
 import java.util.List;

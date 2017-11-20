@@ -10,5 +10,5 @@ public interface IDataType {
 
     String getName();
 
-    Class<?> getStatClass();
+    Class<?> getModelClass();
 }

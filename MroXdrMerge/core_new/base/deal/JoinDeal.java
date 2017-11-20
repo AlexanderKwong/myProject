@@ -1,16 +1,12 @@
-package baseDeal;
+package base.deal;
 
+import base.IDeal;
 import base.IModel;
-import org.apache.hadoop.util.hash.Hash;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Kwong on 2017/11/10.
  */
-public abstract class JoinDeal<O> implements IDeal<IModel, O> {
+public abstract class JoinDeal<O extends IModel> implements IDeal<IModel, O> {
 
     public interface ModelMngBuilder<T extends IModel>{
 

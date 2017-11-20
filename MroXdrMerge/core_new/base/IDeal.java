@@ -1,4 +1,4 @@
-package baseDeal;
+package base;
 
 import base.IGroupKey;
 

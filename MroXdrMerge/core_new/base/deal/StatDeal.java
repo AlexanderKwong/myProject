@@ -1,6 +1,8 @@
-package baseDeal;
+package base.deal;
 
+import base.IDeal;
 import base.IModel;
+import base.deal.exception.ContinueException;
 
 /**
  * Created by Kwong on 2017/11/10.

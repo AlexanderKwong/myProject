@@ -1,4 +1,4 @@
-package baseDeal;
+package base.deal.exception;
 
 public class ContinueException extends Exception
 {
