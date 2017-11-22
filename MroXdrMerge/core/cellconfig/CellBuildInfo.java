@@ -24,7 +24,7 @@ public class CellBuildInfo
 		cellBuildMap = new HashMap<String, Integer>();
 	}
 
-	public boolean loadCellBuild(Configuration conf, int eci, int cityid)
+	public boolean loadCellBuild(Configuration conf, long eci, int cityid)
 	{
 		String path = cellBuildPath + "/cell_build_grid_" + cityid + "_" + eci + ".data.gz";
 		return loadCellBuild(conf, path);

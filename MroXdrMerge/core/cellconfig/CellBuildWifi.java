@@ -42,7 +42,7 @@ public class CellBuildWifi
 		}
 	}
 
-	public boolean loadBuildWifi(Configuration conf, int eci, int cityid)
+	public boolean loadBuildWifi(Configuration conf, long eci, int cityid)
 	{
 		String path = cellBuildWifiPath + "/cell_build_wifi_" + cityid + "_" + eci + ".data.gz";
 		return loadWifi(conf, path);
