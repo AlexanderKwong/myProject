@@ -1,6 +1,7 @@
 package logic.deal;
 
 import base.IModel;
+import base.deal.exception.ContinueException;
 import cellconfig.CellBuildInfo;
 import cellconfig.CellBuildWifi;
 import cellconfig.CellConfig;
@@ -9,12 +10,13 @@ import jan.util.IWriteLogCallBack;
 import jan.util.LOGHelper;
 import model.DT_Sample_4G;
 import base.deal.JoinDeal;
+import model.SIGNAL_MR_All;
 import org.apache.hadoop.conf.Configuration;
 
 /**
  * Created by Kwong on 2017/11/21.
  */
-public class MrCellJoinDeal extends JoinDeal<DT_Sample_4G>{
+public class MrCellJoinDeal extends JoinDeal<IModel>{
 
     private long eci;
     private LteCellInfo cellInfo;
@@ -62,9 +64,16 @@ public class MrCellJoinDeal extends JoinDeal<DT_Sample_4G>{
     }
 
     @Override
-    public DT_Sample_4G deal(IModel o) throws Exception {
+    public IModel deal(IModel o) throws Exception {
+        if(o instanceof SIGNAL_MR_All){
+            SIGNAL_MR_All mroItem = (SIGNAL_MR_All)o;
+            if (mroItem == null || mroItem.tsc == null || mroItem.tsc.MmeUeS1apId <= 0 || mroItem.tsc.Eci <= 0 || mroItem.tsc.beginTime <= 0)
+                throw new ContinueException();
+            // 附上地市id
+            mroItem.tsc.cityID = cellInfo.cityid;
 
-        return null;
+        }
+        return o;
     }
 
     @Override
