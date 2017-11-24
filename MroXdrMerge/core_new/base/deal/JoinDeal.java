@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by Kwong on 2017/11/10.
+ * ps. 入参声明为IModel而不是某个特定的泛型，为的是保留一些灵活性，让开发者选择在一个deal中关联多种数据 还是 声明多个deal来关联多种数据
+ * pss. 返回值也该声明为IModel吧，来的数据如果不是这个deal能处理的，应该往下传递
  */
 public abstract class JoinDeal<O extends IModel> implements IDeal<IModel, O> {
 
@@ -37,7 +39,7 @@ public abstract class JoinDeal<O extends IModel> implements IDeal<IModel, O> {
 
         private String joinKeyHash ;
 
-        public HashJoinCondition generate(Object... values){
+        public static HashJoinCondition generate(Object... values){
             HashJoinCondition joinKey = new HashJoinCondition();
             StringBuilder sb = new StringBuilder();
             for (Object o : values){
