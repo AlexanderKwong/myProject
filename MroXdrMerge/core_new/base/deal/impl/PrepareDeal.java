@@ -1,8 +1,7 @@
-package base.deal;
+package base.deal.impl;
 
 import StructData.Tuple2;
 import base.IDataType;
-import base.IDeal;
 import base.IGroupKey;
 import base.IModel;
 import model.ModelFactory;

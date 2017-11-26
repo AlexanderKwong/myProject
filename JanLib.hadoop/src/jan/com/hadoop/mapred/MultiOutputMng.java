@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import base.IDataOutputer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -12,7 +13,7 @@ import org.apache.hadoop.mapreduce.TaskInputOutputContext;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 
-public class MultiOutputMng<KEYOUT, VALUEOUT> {
+public class MultiOutputMng<KEYOUT, VALUEOUT> implements IDataOutputer<KEYOUT, VALUEOUT> {
 	private Configuration conf;
 	private Map<String, MultiTypeItem> multiTypeMap;
 	private DistributedFileSystem hdfs;
@@ -77,7 +78,7 @@ public class MultiOutputMng<KEYOUT, VALUEOUT> {
 		}
 	}
 
-	public void write(String typeName, KEYOUT key, VALUEOUT value) throws IOException, InterruptedException {
+	public void write(String typeName, KEYOUT key, VALUEOUT value) throws Exception{
 		MultiTypeItem item = multiTypeMap.get(typeName);
 		if (item != null) {
 			mos.write(typeName, key, value, item.getPathName());

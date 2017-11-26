@@ -1,8 +1,8 @@
-package base.deal;
+package base.deal.impl;
 
 import base.IDeal;
 import base.IModel;
-import base.deal.exception.ContinueException;
+import base.deal.impl.exception.ContinueException;
 
 /**
  * Created by Kwong on 2017/11/10.
@@ -21,5 +21,5 @@ public abstract class StatDeal<I extends IModel>  implements IDeal<I, I> {
         return object;
     }
 
-    public abstract boolean stat(I object);
+    public abstract boolean stat(I object) throws Exception;
 }

@@ -1,6 +1,8 @@
 package mro.lablefill;
 
-public class XdrLable
+import base.IModel;
+
+public class XdrLable implements IModel
 {
 	public int cityID;
 	public long eci;
@@ -41,6 +43,9 @@ public class XdrLable
 	public int areaId;
 	public int areaType;
 	public String msisdn = "";
+	//20171126 add by kwong
+	public int ibuildid;
+	public int iheight;
 
 	public XdrLable()
 	{

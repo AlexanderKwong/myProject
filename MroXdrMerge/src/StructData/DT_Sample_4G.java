@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import base.IModel;
 import mro.evt.EventData;
 import mro.evt.MrErrorEventData;
 import mroxdrmerge.CompileMark;
@@ -11,7 +12,7 @@ import mroxdrmerge.MainModel;
 import util.Func;
 import util.StringUtil;
 
-public class DT_Sample_4G
+public class DT_Sample_4G implements IModel
 {
 	public int cityID;
 	public int fileID;

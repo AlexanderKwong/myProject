@@ -13,6 +13,7 @@ import java.util.Set;
 
 //import org.jruby.RubyProcess.Sys;
 
+import base.IModel;
 import jan.util.DataAdapterReader;
 import jan.util.GisPos;
 import jan.util.StringHelper;
@@ -22,7 +23,7 @@ import jan.util.DataAdapterConf.ColumnInfo;
 import util.DataGeter;
 import util.Func;
 
-public class SIGNAL_MR_All
+public class SIGNAL_MR_All implements IModel
 {
 	public SIGNAL_MR_SC tsc;
 	public short[] nccount;// 4

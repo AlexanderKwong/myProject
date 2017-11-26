@@ -1,4 +1,4 @@
-package base.deal;
+package base.deal.impl;
 
 import base.IDeal;
 

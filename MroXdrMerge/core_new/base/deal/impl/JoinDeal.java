@@ -1,4 +1,4 @@
-package base.deal;
+package base.deal.impl;
 
 import base.IDeal;
 import base.IModel;
@@ -25,7 +25,7 @@ public abstract class JoinDeal<O extends IModel> implements IDeal<IModel, O> {
          * @param joinCondition 关联条件
          * @return
          */
-        T get(JoinCondition joinCondition);
+        List<T> get(JoinCondition joinCondition);
 
     }
 

@@ -643,8 +643,6 @@ public class MroLableFileReducers
 		/**
 		 * 
 		 * @param xdrlocation
-		 * @param cellBuild
-		 * @param cellBuildWifi
 		 * @return
 		 */
 		public String outPutLocLib(XdrLable xdrlocation)
