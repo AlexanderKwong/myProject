@@ -7,6 +7,8 @@ import base.deal.impl.OutDeal;
 import base.deal.impl.exception.ContinueException;
 import jan.util.IWriteLogCallBack;
 import jan.util.LOGHelper;
+import mroxdrmerge.CompileMark;
+import mroxdrmerge.MainModel;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import xdr.locallex.LocItem;
@@ -16,7 +18,7 @@ import xdr.locallex.LocItem;
  * @Description
  * @date 2017/11/26
  */
-public class MrLocOutDeal extends OutDeal<SIGNAL_MR_All, SIGNAL_MR_All> {
+public class MrLocOutDeal extends OutDeal<SIGNAL_MR_All> {
 
     private IDataOutputer dataOutputer;
     private Text curText;
@@ -26,12 +28,12 @@ public class MrLocOutDeal extends OutDeal<SIGNAL_MR_All, SIGNAL_MR_All> {
      * @param dataOutputer 吐出的接口类
      */
     public MrLocOutDeal(IDataOutputer dataOutputer) {
-        super(dataOutputer);
+        super(dataOutputer, CompileMark.LocAll);
         curText = new Text();
     }
 
     @Override
-    public SIGNAL_MR_All deal(SIGNAL_MR_All item) throws Exception {
+    public  boolean out(SIGNAL_MR_All item) throws Exception {
         if (item.tsc.longitude <= 0)
         {
             throw new ContinueException();
@@ -68,12 +70,9 @@ public class MrLocOutDeal extends OutDeal<SIGNAL_MR_All, SIGNAL_MR_All> {
         catch (Exception e)
         {
             LOGHelper.GetLogger().writeLog(IWriteLogCallBack.LogType.error, "create mr loclib", e);
+            return false;
         }
-        return item;
+        return true;
     }
 
-    @Override
-    public void flush() {
-
-    }
 }

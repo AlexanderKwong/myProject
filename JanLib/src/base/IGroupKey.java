@@ -5,5 +5,5 @@ package base;
  */
 public interface IGroupKey {
 
-    IDataType getDataType();
+    IDataType dataType();
 }

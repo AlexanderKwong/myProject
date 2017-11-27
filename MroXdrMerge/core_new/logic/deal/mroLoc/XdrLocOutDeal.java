@@ -17,23 +17,24 @@ import xdr.locallex.LocItem;
  * @Description
  * @date 2017/11/26
  */
-public class XdrLocOutDeal extends OutDeal<IModel, IModel>{
+public class XdrLocOutDeal extends OutDeal<IModel>{
 
-    Text curText;
-    StringBuilder sb;
+    private Text curText;
+    private StringBuilder sb;
 
     public XdrLocOutDeal(IDataOutputer dataOutputer){
-        super(dataOutputer);
+        super(dataOutputer, CompileMark.LocAll);
         curText = new Text();
         sb = new StringBuilder();
+
     }
 
     @Override
-    public IModel deal(IModel o) throws Exception {
+    public boolean out(IModel o) throws Exception {
         if(o instanceof XdrLable){
             XdrLable xdrLable = (XdrLable)o;
             if ((xdrLable.longitudeGL > 0 || xdrLable.ilongtude > 0) /*&& (xdrLable.itime / TimeSpan * TimeSpan == key.getTimeSpan())*/
-                    && MainModel.GetInstance().getCompile().Assert(CompileMark.LocAll))
+                    /*&& MainModel.GetInstance().getCompile().Assert(CompileMark.LocAll)*/)
             {
 //                curText.set(outPutLocLib(xdrLable));
 //                mosMng.write("xdrloclib", NullWritable.get(), curText);// 吐出xdr位置库
@@ -43,12 +44,7 @@ public class XdrLocOutDeal extends OutDeal<IModel, IModel>{
                 dataOutputer.write("xdrloclib", NullWritable.get(), curText);// 吐出xdr位置库
             }
         }
-        return o;
-    }
-
-    @Override
-    public void flush() {
-
+        return true;
     }
 
     private String outPutLocLib(XdrLable xdrlocation)

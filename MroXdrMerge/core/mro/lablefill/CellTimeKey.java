@@ -4,9 +4,11 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
+import base.IDataType;
+import base.IGroupKey;
 import org.apache.hadoop.io.WritableComparable;
 
-public class CellTimeKey implements WritableComparable<CellTimeKey>
+public class CellTimeKey implements WritableComparable<CellTimeKey>, IGroupKey
 {
 	private long eci = 0;
 	private int timeSpan = 0;
@@ -177,4 +179,8 @@ public class CellTimeKey implements WritableComparable<CellTimeKey>
 		}
 	}
 
+	@Override
+	public IDataType dataType() {
+		return null;
+	}
 }

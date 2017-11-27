@@ -14,7 +14,21 @@ public class DealBuilder<T, K> implements IDeal<T, K> {
 
     private List<IDeal> dealMng = new ArrayList<>();
 
-    public <J> DealBuilder<T, J> append(IDeal<K, J> deal) {
+    public DealBuilder(){
+
+    }
+
+    public DealBuilder(IDeal<T, K> deal){
+        dealMng.add(deal);
+    }
+
+    /**
+     * 根据PECS原则
+     * @param deal
+     * @param <J>
+     * @return
+     */
+    public <J> DealBuilder<T, J> append(IDeal<? extends K, J> deal) {
         dealMng.add(deal);
         DealBuilder<T, J> builder = new DealBuilder<>();
         builder.dealMng = this.dealMng;
@@ -25,7 +39,7 @@ public class DealBuilder<T, K> implements IDeal<T, K> {
         return this;
     }
 
-    public K deal(T o) {
+    public K deal(T o) throws Exception{
         Object result = o;
         for (IDeal deal : dealMng) {
             try {
@@ -34,8 +48,6 @@ public class DealBuilder<T, K> implements IDeal<T, K> {
                 continue;
             } catch (BreakException e) {
                 break;
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
         return null;

@@ -63,26 +63,26 @@
             <version>${JanLib.hadoop-version}</version>
         </dependency>
 
-        <dependency>
+  <!--      <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-hdfs</artifactId>
             <version>${hadoop-version}</version>
-        </dependency>
-        <dependency>
+        </dependency>-->
+  <!--      <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
             <version>${hadoop-version}</version>
-        </dependency>
-        <dependency>
+        </dependency>-->
+<!--        <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
             <version>${hadoop-version}</version>
-        </dependency>
-        <dependency>
+        </dependency>-->
+  <!--      <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-yarn-client</artifactId>
             <version>${hadoop-version}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -100,11 +100,11 @@
             <version>${spark.version}</version>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
             <version>1.8.2</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>

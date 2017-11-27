@@ -10,7 +10,7 @@ import mro.lablefill.XdrLable;
 /**
  * Created by Kwong on 2017/11/21.
  */
-public class MrXdrJoinDeal extends JoinDeal<SIGNAL_MR_All>{
+public class MrXdrJoinDeal extends JoinDeal<IModel>{
 
     private XdrLableMng xdrLableMng;
     private XdrLableMng.Builder xdrLableMngBuilder;
@@ -20,7 +20,7 @@ public class MrXdrJoinDeal extends JoinDeal<SIGNAL_MR_All>{
     }
 
     @Override
-    public SIGNAL_MR_All deal(IModel o) throws Exception {
+    public IModel deal(IModel o) throws Exception {
         if (o instanceof XdrLable)
         {
             xdrLableMngBuilder.append((XdrLable)o);

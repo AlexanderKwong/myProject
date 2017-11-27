@@ -15,7 +15,7 @@ public class PrepareDeal<K extends IGroupKey> extends MapDeal<Tuple2<K, String>,
 
     @Override
     public IModel deal(Tuple2<K, String> kv) throws Exception {
-        IDataType dataType = kv.first.getDataType();
+        IDataType dataType = kv.first.dataType();
         String value = kv.second;
 
         return modelFactory.create(dataType, value);

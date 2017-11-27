@@ -30,6 +30,11 @@ public class XdrCellJoinDeal extends JoinDeal<IModel> {
     public IModel deal(IModel o) throws Exception {
         if(o instanceof XdrLable){
             XdrLable xdrLable = (XdrLable)o;
+
+            if (eci == 0 || cellMng == null){
+                init(xdrLable.eci);
+            }
+
             xdrLable.ibuildid = cellMng.cellBuild.getBuildId(xdrLable.longitudeGL, xdrLable.latitudeGL);
             xdrLable.iheight = WifiFixed.returnLevel(cellMng.cellBuildWifi, xdrLable.wifiName, xdrLable.ibuildid);
         }
@@ -38,6 +43,7 @@ public class XdrCellJoinDeal extends JoinDeal<IModel> {
 
     @Override
     public void flush() {
-
+        cellMng = null;
+        eci = 0;
     }
 }

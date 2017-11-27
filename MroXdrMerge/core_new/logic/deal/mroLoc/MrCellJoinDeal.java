@@ -2,6 +2,7 @@ package logic.deal.mroLoc;
 
 import StructData.StaticConfig;
 import base.IModel;
+import base.deal.impl.exception.BreakException;
 import base.deal.impl.exception.ContinueException;
 import jan.util.GisFunction;
 import logic.deal.mroLoc.join.CellMng;
@@ -15,7 +16,7 @@ import util.MrLocation;
  * TODO 必须在 {@link MrXdrJoinDeal}之后, 定位之后才能得到 室内室外
  * Created by Kwong on 2017/11/21.
  */
-public class MrCellJoinDeal extends JoinDeal<IModel>{
+public class MrCellJoinDeal extends JoinDeal<SIGNAL_MR_All>{
 
     private long eci;
     private CellMng cellMng;
@@ -32,19 +33,27 @@ public class MrCellJoinDeal extends JoinDeal<IModel>{
     }
 
     @Override
-    public IModel deal(IModel o) throws Exception {
+    public SIGNAL_MR_All deal(IModel o) throws Exception {
         if(o instanceof SIGNAL_MR_All){
             SIGNAL_MR_All mrAll = (SIGNAL_MR_All)o;
             if (mrAll == null || mrAll.tsc == null || mrAll.tsc.MmeUeS1apId <= 0 || mrAll.tsc.Eci <= 0 || mrAll.tsc.beginTime <= 0)
                 throw new ContinueException();
+
+            if(eci == 0 || cellMng == null){
+                init(mrAll.tsc.Eci);
+            }
+
             // 附上地市id
             mrAll.tsc.cityID = cellMng.cellInfo.cityid;
 
             getInOrOut(mrAll);
 
             filterByDist(mrAll);
+
+            return mrAll;
         }
-        return o;
+//        return o;
+        throw new BreakException();
     }
 
     private void getInOrOut(SIGNAL_MR_All mrAll)
@@ -122,6 +131,7 @@ public class MrCellJoinDeal extends JoinDeal<IModel>{
     
     @Override
     public void flush() {
+        eci = 0;
         cellMng = null;
     }
 }

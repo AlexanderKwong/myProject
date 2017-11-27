@@ -3,6 +3,8 @@ package logic.deal.mroLoc;
 import base.IDataOutputer;
 import base.deal.impl.StatDeal;
 import mdtstat.UserMdtStat;
+import mroxdrmerge.CompileMark;
+import mroxdrmerge.MainModel;
 import mrstat.UserMrStat;
 import StructData.DT_Sample_4G;
 import mrstat.TypeInfo;
@@ -32,6 +34,8 @@ public class FgOttStatDeal extends StatDeal<DT_Sample_4G>{
     
     private Text curText;
 
+    private boolean effective;
+
     public FgOttStatDeal(IDataOutputer dataOutputer, TypeInfoMng typeInfoMng, TypeInfoMng mdtTypeInfoMng){
         this.dataOutputer = dataOutputer;
         // mdt new table
@@ -42,12 +46,16 @@ public class FgOttStatDeal extends StatDeal<DT_Sample_4G>{
         userStat = new UserMrStat(typeResult);
         
         curText = new Text();
+
+        if (MainModel.GetInstance().getCompile().Assert(CompileMark.fgOttStat)){
+            effective = true;
+        }
     }
 
     @Override
     public void flush() {
-//        if (MainModel.GetInstance().getCompile().Assert(CompileMark.fgOttStat))
-//        {
+        if (effective)
+        {
             // mro新表吐出
             userStat.outResult();
             for (Map.Entry<TypeInfo, StringBuffer> entry : typeResult.getMapEntry())
@@ -78,13 +86,13 @@ public class FgOttStatDeal extends StatDeal<DT_Sample_4G>{
                 }
             }
             mdtTypeResult.cleanMap();
-//        }
+        }
     }
 
     @Override
     public boolean stat(DT_Sample_4G sample) {
-//        if (MainModel.GetInstance().getCompile().Assert(CompileMark.fgOttStat))
-//        {
+        if (effective)
+        {
             if (sample.mrType.equals("MDT_IMM") || sample.mrType.equals("MDT_LOG"))
             {
                 userMdtStat.dealSample(sample);
@@ -94,7 +102,7 @@ public class FgOttStatDeal extends StatDeal<DT_Sample_4G>{
             {
                 userStat.dealSample(sample);
             }
-//        }
+        }
         return true;
     }
 }
