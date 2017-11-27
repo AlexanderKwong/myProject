@@ -14,9 +14,7 @@ public class DealBuilder<T, K> implements IDeal<T, K> {
 
     private List<IDeal> dealMng = new ArrayList<>();
 
-    public DealBuilder(){
-
-    }
+    public DealBuilder(){}
 
     public DealBuilder(IDeal<T, K> deal){
         dealMng.add(deal);
@@ -55,6 +53,12 @@ public class DealBuilder<T, K> implements IDeal<T, K> {
 
     @Override
     public void flush() {
-
+        for (IDeal deal : dealMng) {
+            try {
+                deal.flush();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }

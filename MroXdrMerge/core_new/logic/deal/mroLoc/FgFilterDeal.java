@@ -1,4 +1,4 @@
-package logic.deal.mroLoc.join;
+package logic.deal.mroLoc;
 
 import StructData.DT_Sample_4G;
 import base.deal.impl.FilterDeal;

@@ -47,7 +47,7 @@ public class KpiStatDeal  extends StatDeal<DT_Sample_4G> implements Cacheable{
     @Override
     public void flush() {
 // 天数据吐出/////////////////////////////////////////////////////////////////////////////////////
-        statDeal.outDealingData();
+      /*  statDeal.outDealingData();
         statDeal_DT.outDealingData();
         statDeal_CQT.outDealingData();
 
@@ -152,7 +152,8 @@ public class KpiStatDeal  extends StatDeal<DT_Sample_4G> implements Cacheable{
             }
 
             userActStatMng = new UserActStatMng();
-        }
+        }*/
+      flushAllCache();
     }
 
     @Override

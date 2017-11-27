@@ -3,33 +3,17 @@ package logic.mapred.mroLoc;
 import ImeiCapbility.ImeiConfig;
 import StructData.*;
 import base.IDeal;
-import base.IGroupKey;
-import base.IModel;
 import base.deal.impl.DealBuilder;
 import base.deal.impl.PrepareDeal;
-import cellconfig.CellBuildInfo;
-import cellconfig.CellBuildWifi;
 import cellconfig.CellConfig;
-import cellconfig.LteCellInfo;
 import jan.com.hadoop.mapred.DataDealReducer;
 import jan.com.hadoop.mapred.MultiOutputMng;
-import jan.util.DataAdapterConf;
-import jan.util.DataAdapterReader;
-import jan.util.GisFunction;
 import jan.util.LOGHelper;
-import locuser.UserProp;
-import locuser_v2.UserLocer;
 import logic.deal.mroLoc.*;
-import logic.deal.mroLoc.join.FgFilterDeal;
+import logic.deal.mroLoc.FgFilterDeal;
 import mdtstat.MdtNewTableStat;
-import mdtstat.UserMdtStat;
-import mro.evt.EventData;
-import mro.evt.MrErrorEventData;
 import mro.lablefill.*;
 import mro.lablefillex.MroLableFileReducers;
-import mro.lablefillex.MroLocStat;
-import mro.lablefillex.WifiFixed;
-import mro.lablefillex_uemro.FigureFixedOutput;
 import mroxdrmerge.CompileMark;
 import mroxdrmerge.MainModel;
 import mrstat.*;
@@ -39,10 +23,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import specialUser.SpecialUserConfig;
-import util.Func;
-import util.MrLocation;
-import xdr.lablefill.ResultHelper;
-import xdr.locallex.LocItem;
 
 import java.io.IOException;
 import java.util.*;
@@ -94,19 +74,6 @@ public class MroLableFileReducer  extends DataDealReducer<CellTimeKey, Text, Nul
     @Override
     protected void cleanup(Context context) throws IOException, InterruptedException
     {
-        try
-        {
-            LOGHelper.GetLogger().writeLog(LogType.info, "begin cleanup:");
-//            outUserData();
-//            outAllData();
-//            figureMroFix.cleanup();
-            LOGHelper.GetLogger().writeLog(LogType.info, "end cleanup:");
-        }
-        catch (Exception e)
-        {
-            LOGHelper.GetLogger().writeLog(LogType.error, "output data error ", e);
-        }
-
         super.cleanup(context);
 
         mosMng.close();
