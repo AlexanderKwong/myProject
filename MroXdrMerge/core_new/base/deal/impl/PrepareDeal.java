@@ -11,7 +11,7 @@ import model.ModelFactory;
  */
 public class PrepareDeal<K extends IGroupKey> extends MapDeal<Tuple2<K, String>, IModel> {
 
-    protected ModelFactory modelFactory;//注入
+    protected ModelFactory modelFactory = new ModelFactory();//注入
 
     @Override
     public IModel deal(Tuple2<K, String> kv) throws Exception {

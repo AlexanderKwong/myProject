@@ -61,4 +61,5 @@ public class DealBuilder<T, K> implements IDeal<T, K> {
             }
         }
     }
+
 }

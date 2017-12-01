@@ -41,7 +41,7 @@ public class MrXdrJoinDeal extends JoinDeal<IModel>{
 
     @Override
     public void flush() {
-        xdrLableMngBuilder = null;
+        xdrLableMngBuilder = new XdrLableMng.Builder();;
         xdrLableMng = null;
     }
 

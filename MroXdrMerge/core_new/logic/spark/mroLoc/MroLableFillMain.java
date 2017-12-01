@@ -21,9 +21,9 @@ public class MroLableFillMain {
     public static boolean runSparkJob(JavaSparkContext sc){
 
 
-        JavaPairRDD<Object, Text> xdrRDD = sc.newAPIHadoopFile("", CombineTextInputFormat.class, Object.class, Text.class, sc.hadoopConfiguration());
+       /* JavaPairRDD<Object, Text> xdrRDD = sc.<Object, Text,  CombineTextInputFormat>newAPIHadoopFile("", CombineTextInputFormat.class, Object.class, Text.class, sc.hadoopConfiguration());
 
-        JavaPairRDD<Object, Text> mrRDD = sc.newAPIHadoopFile("", CombineTextInputFormat.class, Object.class, Text.class, sc.hadoopConfiguration());
+        JavaPairRDD<Object, Text> mrRDD = sc.<Object, Text,  CombineTextInputFormat>newAPIHadoopFile("", CombineTextInputFormat.class, Object.class, Text.class, sc.hadoopConfiguration());
 
         SQLContext sqlContext = new SQLContext(sc);
 
@@ -35,7 +35,7 @@ public class MroLableFillMain {
         DataFrame mrDF = null;
 
         mrDF.join(xdrDF, new Column("eci"), "LEFT");
-
+*/
         return false;
     }
 }

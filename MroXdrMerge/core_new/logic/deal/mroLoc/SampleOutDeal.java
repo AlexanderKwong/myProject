@@ -35,6 +35,7 @@ public class SampleOutDeal extends OutDeal<DT_Sample_4G> {
      */
     public SampleOutDeal(IDataOutputer dataOutputer) {
         super(dataOutputer, CompileMark.OutAllSample, CompileMark.MroDetail, CompileMark.Debug);
+        this.dataOutputer = dataOutputer;
         effective = true;
 
         outDeals = new ArrayList<>();

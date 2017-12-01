@@ -23,6 +23,7 @@ public abstract class OutDeal<I> implements IDeal<I, I> {
         for (int compileMark : compileMarks){
             if (MainModel.GetInstance().getCompile().Assert(compileMark)){
                 effective = true;
+                this.dataOutputer = dataOutputer;
                 break;
             }
         }

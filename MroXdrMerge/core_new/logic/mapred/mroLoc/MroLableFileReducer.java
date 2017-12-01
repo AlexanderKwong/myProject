@@ -48,9 +48,9 @@ public class MroLableFileReducer  extends DataDealReducer<CellTimeKey, Text, Nul
         this.context = context;
         loadConfig();
 
-        TypeInfoMng typeInfoMng = null;
-        TypeInfoMng mdtTypeInfoMng = null;
-        initOutputMng(conf, mosMng, typeInfoMng, mdtTypeInfoMng);
+        TypeInfoMng typeInfoMng = new TypeInfoMng();
+        TypeInfoMng mdtTypeInfoMng = new TypeInfoMng();
+        initOutputMng(conf, typeInfoMng, mdtTypeInfoMng);
 
         deal = new DealBuilder<>(new PrepareDeal<CellTimeKey>()) //组装实体
                 .append(new XdrLocOutDeal(mosMng))//XDR位置库吐出
@@ -97,13 +97,12 @@ public class MroLableFileReducer  extends DataDealReducer<CellTimeKey, Text, Nul
     /**
      * 初始化输出
      * @param conf
-     * @param mosMng
      * @param typeInfoMng
      * @param mdtTypeInfoMng
      * @throws IOException
      * @throws InterruptedException
      */
-    private void initOutputMng(Configuration conf, MultiOutputMng<NullWritable, Text> mosMng, TypeInfoMng typeInfoMng, TypeInfoMng mdtTypeInfoMng) throws IOException, InterruptedException{
+    private void initOutputMng(Configuration conf, TypeInfoMng typeInfoMng, TypeInfoMng mdtTypeInfoMng) throws IOException, InterruptedException{
         String path_sample = conf.get("mastercom.mroxdrmerge.mro.locfillex.path_sample");
         String path_event = conf.get("mastercom.mroxdrmerge.mro.locfillex.path_event");
         String path_cell = conf.get("mastercom.mroxdrmerge.mro.locfillex.path_cell");
@@ -168,11 +167,9 @@ public class MroLableFileReducer  extends DataDealReducer<CellTimeKey, Text, Nul
         }
 
         // fgottstat output
-        typeInfoMng = new TypeInfoMng();
         MroNewTableStat.getOutPutPackage(mosMng, typeInfoMng, outpath_table, dateStr);
 
         // mdt output
-        mdtTypeInfoMng = new TypeInfoMng();
         MdtNewTableStat.getOutPutPackage(mosMng, mdtTypeInfoMng, outpath_table, dateStr);
 
         mosMng.SetOutputPath("mrosample", path_sample);
