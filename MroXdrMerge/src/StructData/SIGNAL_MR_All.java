@@ -641,4 +641,8 @@ public class SIGNAL_MR_All implements IModel
 
 	}
 
+	@Override
+	public boolean FillData(String[] args) {
+		return FillData(new Object[]{args, 0});
+	}
 }

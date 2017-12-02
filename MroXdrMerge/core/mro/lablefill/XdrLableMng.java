@@ -261,10 +261,10 @@ public class XdrLableMng
 					imsiSet.add(item.imsi);
 				}
 				// 前后5分钟如果同一个usapid有两个及以上的imsi 丢弃
-				if (imsiSet.size() > 1)
-				{
-					return null;
-				}
+//				if (imsiSet.size() > 1)
+//				{
+//					return null;
+//				}
 				int tmTimeSpan = Math.abs(tmTime - item.itime);
 
 				if (tmTime >= item.itime)

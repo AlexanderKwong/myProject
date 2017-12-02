@@ -668,4 +668,8 @@ public class DT_Sample_4G implements IModel
 		return eventDatas;
 	}
 
+	@Override
+	public boolean FillData(String[] args) {
+		return false;
+	}
 }

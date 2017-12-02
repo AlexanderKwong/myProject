@@ -4,6 +4,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
+import StructData.SIGNAL_MR_All;
 import base.IDataType;
 import base.IGroupKey;
 import org.apache.hadoop.io.WritableComparable;
@@ -14,6 +15,7 @@ public class CellTimeKey implements WritableComparable<CellTimeKey>, IGroupKey
 	private int timeSpan = 0;
 	private int dataType = 0;// 1 xdrloc ;2 mrodata
 	private int suTime = 0;
+	public IDataType dataTypeEnum;
 
 	// 要写一个默认构造函数，否则MapReduce的反射机制，无法创建该类报错
 	public CellTimeKey()
@@ -31,6 +33,7 @@ public class CellTimeKey implements WritableComparable<CellTimeKey>, IGroupKey
 		this.eci = eci;
 		this.timeSpan = timeSpan;
 		this.dataType = dataType;
+		this.dataTypeEnum = DataType.fromCode(dataType);
 	}
 
 	public CellTimeKey(long eci, int timeSpan, int dataType, int subtime)
@@ -40,6 +43,7 @@ public class CellTimeKey implements WritableComparable<CellTimeKey>, IGroupKey
 		this.timeSpan = timeSpan;
 		this.dataType = dataType;
 		this.suTime = subtime;
+		this.dataTypeEnum = DataType.fromCode(dataType);
 	}
 
 	public long getEci()
@@ -78,6 +82,7 @@ public class CellTimeKey implements WritableComparable<CellTimeKey>, IGroupKey
 		this.timeSpan = in.readInt();
 		this.dataType = in.readInt();
 		this.suTime = in.readInt();
+		this.dataTypeEnum = DataType.fromCode(dataType);
 	}
 
 	/**
@@ -181,6 +186,49 @@ public class CellTimeKey implements WritableComparable<CellTimeKey>, IGroupKey
 
 	@Override
 	public IDataType dataType() {
-		return null;
+		return dataTypeEnum;
+	}
+
+	public enum DataType implements IDataType{
+
+		XDR_LOCATION(1, "xdr_location", XdrLable.class),
+		MRO(2, "mro", SIGNAL_MR_All.class),
+		MRO_UNFORMATED(5, "mro_unformated", SIGNAL_MR_All.class);
+
+		DataType(int code, String name, Class<?> clazz){
+			this.code = code;
+			this.name = name;
+			this.modelClass = clazz;
+		}
+
+		int code;
+
+		String name;
+
+		Class<?> modelClass;
+
+		@Override
+		public int getCode() {
+			return code;
+		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
+
+		@Override
+		public Class<?> getModelClass() {
+			return modelClass;
+		}
+
+		public static DataType fromCode(int code){
+			for (DataType dataType : values()){
+				if (dataType.getCode() == code){
+					return dataType;
+				}
+			}
+			throw new IllegalArgumentException();
+		}
 	}
 }
