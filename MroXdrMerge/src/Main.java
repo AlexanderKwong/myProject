@@ -17,6 +17,7 @@ import mro.lablefill.MroLableFillMain;
 import mro.lablefill_uemro.UEMroLableFillMain;
 import mro.lablefill_xdr_figure.MroFgLableFillMains;
 import mro.lablefillex.MroLableFillMains;
+//import logic.mapred.mroLoc.MroLableFillMains;
 import mro.lablefillex_uemro.UEMroLableFillExMain;
 import mro.villagestat.VillageStatMain;
 import mroxdrmerge.CompileMark;

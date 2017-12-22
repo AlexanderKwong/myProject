@@ -78,10 +78,16 @@ public class MultiOutputMng<KEYOUT, VALUEOUT> implements IDataOutputer<KEYOUT, V
 		}
 	}
 
-	public void write(String typeName, KEYOUT key, VALUEOUT value) throws Exception{
+	public void write(String typeName, KEYOUT key, VALUEOUT value)/* throws Exception*/{
 		MultiTypeItem item = multiTypeMap.get(typeName);
 		if (item != null) {
-			mos.write(typeName, key, value, item.getPathName());
+			try {
+				mos.write(typeName, key, value, item.getPathName());
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
 		}
 	}

@@ -245,4 +245,79 @@ public class XdrLable implements IModel
 
 	}
 
+	@Override
+	public boolean FillData(String[] values) {
+		int i = 0;
+		this.cityID = Integer.parseInt(values[i++]);
+		this.eci = Long.parseLong(values[i++]);
+		this.s1apid = Long.parseLong(values[i++]);
+		this.itime = Integer.parseInt(values[i++]);
+		this.imsi = Long.parseLong(values[i++]);
+		this.ilongtude = Integer.parseInt(values[i++]);
+		this.ilatitude = Integer.parseInt(values[i++]);
+
+		this.testType = Integer.parseInt(values[i++]);
+		this.location = Integer.parseInt(values[i++]);
+		this.dist = Long.parseLong(values[i++]);
+		this.radius = Integer.parseInt(values[i++]);
+		this.loctp = values[i++];
+		this.indoor = Integer.parseInt(values[i++]);
+		this.networktype = values[i++];
+		this.lable = values[i++];
+
+		this.longitudeGL = Integer.parseInt(values[i++]);
+		this.latitudeGL = Integer.parseInt(values[i++]);
+		this.testTypeGL = Integer.parseInt(values[i++]);
+
+		this.locationGL = Integer.parseInt(values[i++]);
+		this.distGL = Long.parseLong(values[i++]);
+		this.radiusGL = Integer.parseInt(values[i++]);
+		this.loctpGL = values[i++];
+		this.indoorGL = Integer.parseInt(values[i++]);
+		this.lableGL = values[i++];
+
+		this.serviceType = Integer.parseInt(values[i++]);
+		this.subServiceType = Integer.parseInt(values[i++]);
+
+		this.moveDirect = Integer.parseInt(values[i++]);
+
+		this.loctimeGL = Integer.parseInt(values[i++]);
+
+		this.host = values[i++];
+
+		this.wifiName = values[i++];
+		// 等各地市全部换成新版程序，判断可去掉
+		if (i <= values.length - 1)
+		{
+			try
+			{
+				this.imeiTac = Integer.parseInt(values[i++]);
+			}
+			catch (Exception e)
+			{
+				this.imeiTac = 0;
+			}
+		}
+
+		if (i <= values.length - 1)
+		{
+			this.eciSwitchList = values[i++];
+		}
+
+		if (i <= values.length - 1)
+		{
+			this.areaType = Integer.parseInt(values[i++]);
+		}
+
+		if (i <= values.length - 1)
+		{
+			this.areaId = Integer.parseInt(values[i++]);
+		}
+
+		if (i <= values.length - 1)
+		{
+			this.msisdn = values[i++];
+		}
+		return true;
+	}
 }

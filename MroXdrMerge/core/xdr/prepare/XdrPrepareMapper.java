@@ -193,7 +193,7 @@ public class XdrPrepareMapper
 			path_Location = conf.get("mastercom.mroxdrmerge.xdrprepare.path_Location");
 
 			// 初始化输出控制
-			// mosMng = new MultiOutputMng<Text, Text>(context,
+//			 mosMng = new MultiOutputMng<Test, Test>(context,
 			// MainModel.GetInstance().getAppConfig().getFsUri());
 			if (path_Location.contains(":"))
 				mosMng = new MultiOutputMng<Text, Text>(context, "");
